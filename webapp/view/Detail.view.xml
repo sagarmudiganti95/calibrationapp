@@ -1,0 +1,97 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.f"
+	xmlns:layout="sap.ui.layout" controllerName="com.prism.zpmcalcheck.controller.Detail">
+	<Page title="Calibration CheckList - {oDetailModel>/Equnr}" showNavButton="{device>/system/phone}" navButtonPress="navToMaster"
+		busyIndicatorDelay="0">
+		<!-- this CSS class add a standard spacing to all the page content -->
+		<content>
+			<ObjectHeader title="{oDetailModel>/Equnr}" backgroundDesign="Solid" intro="{oDetailModel>/Eqktx}" numberState="Warning" titleActive="true"
+				titleLevel="Auto" number="{oDetailModel>/ImObjid}" numberUnit="Work Center">
+				<attributes>
+					<ObjectAttribute title="Date" text="{path: 'oDetailModel>/Gltrp', formatter: '.formatter.formatDateToDDMMMYYYY'}"/>
+					<ObjectAttribute title="Allowed Parameter values of Tasks" text="OK / NOT OK / IN PROCESS"/>
+				</attributes>
+			</ObjectHeader>
+			<Table id="idTaskTable" inset="false" class="sapFDynamicPageAlignContent" width="auto"
+				items="{ path: 'oDetailModel>/ExReportData/results' }">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Tasks" level="H2"/>
+						<!--({oDetailModel>/ExReportData/results/length})-->
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://action-settings" press="onPersoButtonPressed"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="taskcol">
+						<Text text="Task"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" id="freqcol">
+						<Text text="Frequency"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" id="paramcol">
+						<Text text="Parameter Value"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" id="remarkcol">
+						<Text text="Remarks"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" id="lowlimitcol">
+						<Text text="Lower Limit"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" id="uplimitcol">
+						<Text text="Upper Limit"/>
+					</Column>
+					<Column width="7rem" popinHAlign="Center" hAlign="Right" id="objtypecol">
+						<Text text="Object Type"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{oDetailModel>Vornr}" text="{oDetailModel>Ltxa1}"/>
+							<Text text="{oDetailModel>Ktex1}" textAlign="Left" textDirection="RTL"/>
+							<VBox>
+								<SegmentedButton id="SB1" selectionChange="onSelectionChange" selectedKey="{oDetailModel>Input}" visible="{oDetailModel>ParamValue_Visible}"
+									enabled="{oDetailModel>ParamValue_Enabled}">
+									<items>
+										<SegmentedButtonItem text="OK" width="auto" key="OK"/>
+										<SegmentedButtonItem text="NOT OK" width="auto" key="NOTOK"/>
+										<SegmentedButtonItem text="IN PROCESS" width="auto" key="INPRO"/>
+									</items>
+								</SegmentedButton>
+								<Input type="Text" value="{oDetailModel>Input}" visible="{=!${oDetailModel>ParamValue_Visible}}" enabled="{oDetailModel>ParamValue_Enabled}"
+									width="100%"/>
+							</VBox>
+							<!--<ComboBox selectedKey="{oDetailModel>Input}" enabled="{oDetailModel>ParamValue_Enabled}" width="100%">
+								<core:ListItem key="OK" text="OK"/>
+								<core:ListItem key="NOTOK" text="NOT OK"/>
+								<core:ListItem key="INPRO" text="IN PROCESS"/>
+							</ComboBox>-->
+							<Input type="Text" maxLength="70" value="{oDetailModel>Remark}" enabled="{oDetailModel>Remark_Enabled}"/>
+							<Input type="Text" value="{oDetailModel>Toleranzun1}" enabled="false"/>
+							<Input type="Text" value="{oDetailModel>Toleranzob1}" enabled="false"/>
+							<Text text="{oDetailModel>Eqart}" textAlign="Left" textDirection="RTL"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://alert" text="{= ${oMessageModel>/}.length }" visible="{= ${oMessageModel>/}.length > 0 }" type="Emphasized"
+						press="onMessagePopoverPress" id="idMsgPopoverBtn"/>
+					<Button text="Prev" type="Accept" press="onPressPrevious" id="idPrevEquipBtn"/>
+				</contentLeft>
+				<contentRight>
+					<Button xmlns="sap.m" text="Next" type="Accept" press="onPressNext" id="idNextEquipBtn"/>
+				</contentRight>
+				<contentMiddle>
+					<Button xmlns="sap.m" text="Submit" type="Emphasized" press="onSubmit" enabled="{oDetailModel>SubmitBtn_Enabled}"/>
+				</contentMiddle>
+			</Bar>
+		</footer>
+		<!--<headerContent>
+	    <Button xmlns="sap.m" id="button5" text="Back" type="Ghost"/>
+	</headerContent>-->
+	</Page>
+</mvc:View>

@@ -1,0 +1,9 @@
+{
+	"cols": [{
+		"label": "Object Type",
+		"template": "objtype"
+	}, {
+		"label": "Object Name",
+		"template": "objname"
+	}]
+}

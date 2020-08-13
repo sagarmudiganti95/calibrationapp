@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="Object Type" ok=".onObjectTypeValueHelpOkPress" cancel=".onObjectTypeValueHelpCancelPress" afterClose=".onObjectTypeValueHelpAfterClose"
+		supportRanges="true" key="Eqart" descriptionKey="Eartx">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onObjectTypeValueHelpFilterBarSearch">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="Eqart" label="Object Type" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Eqart"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="Eartx" label="Object Description" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Eartx"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

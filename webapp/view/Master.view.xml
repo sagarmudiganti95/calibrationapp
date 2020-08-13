@@ -1,0 +1,30 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="com.prism.zpmcalcheck.controller.Master">
+	<Page title="Equipments ({oMasterModel>/length})" showNavButton="true" navButtonPress="navToFirstPage" busyIndicatorDelay="0">
+		<content>
+			<!--<PullToRefresh id="pullToRefresh" visible="{device>/isTouch}" refresh="handleRefresh"/>-->
+			<List id="idEquipList" items="{ path: 'oMasterModel>/' }" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+				selectionChange="onSelectionChange">
+				<!--<StandardListItem title="EQUIP23456" type="Navigation" press=".onPressGoToDetail"/>-->
+				<StandardListItem title="{oMasterModel>Equnr}" adaptTitleSize="true" description="{oMasterModel>Eqktx}"
+					info="{path: 'oMasterModel>Gltrp', formatter: '.formatter.formatDateToDDMMMYYYY'}" infoState="Warning" type="Active"
+					press="onSelectionChange"/>
+				<headerToolbar></headerToolbar>
+			</List>
+		</content>
+		<footer>
+			<Bar id="bar0">
+				<contentRight>
+					<Button xmlns="sap.m" id="sort" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+				</contentRight>
+			</Bar>
+		</footer>
+		<subHeader>
+			<Toolbar width="100%" id="toolbar1">
+				<content>
+					<SearchField xmlns="sap.m" placeholder="Search for ..." id="idSearch" liveChange="onSearch"/>
+				</content>
+			</Toolbar>
+		</subHeader>
+	</Page>
+</mvc:View>

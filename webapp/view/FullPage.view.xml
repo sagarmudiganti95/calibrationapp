@@ -1,0 +1,188 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" controllerName="com.prism.zpmcalcheck.controller.FullPage">
+	<Page showHeader="true" title="Calibration Checklist" showFooter="true" showNavButton="false" floatingFooter="true" busyIndicatorDelay="0">
+		<content>
+			<form:Form width="auto" editable="true" visible="true" id="inspform">
+				<form:title/>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>empcode}" design="Standard" width="100%" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input id="EmpCode" value="{oInputParamModel>/EmployeeCode}" type="Text" enabled="true" editable="false" visible="true" width="auto">
+										<layoutData>
+											<l:GridData span="L6 M6"/>
+										</layoutData>
+									</Input>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>plant}" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox id="Plant" showSecondaryValues="true" change="onChangePlant" selectedKey="{oInputParamModel>/Plant}"
+										valueState="{oInputParamModel>/Plant_ValueState}" valueStateText="{oInputParamModel>/Plant_ValueStateText}"
+										items="{oInitialLoadModel>/PlantList}">
+										<layoutData>
+											<l:GridData span="L6 M6"/>
+										</layoutData>
+										<core:ListItem key="{oInitialLoadModel>Werks}" text="{oInitialLoadModel>Werks}" additionalText="{oInitialLoadModel>Name1}"/>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>workcentre}" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox id="WorkCenter" showSecondaryValues="true" change="onChangeWorkCentre" selectedKey="{oInputParamModel>/WorkCenter}"
+										valueState="{oInputParamModel>/WorkCenter_ValueState}" valueStateText="{oInputParamModel>/WorkCenter_ValueStateText}"
+										items="{oInputParamModel>/WorkCenters}">
+										<layoutData>
+											<l:GridData span="L6 M6"/>
+										</layoutData>
+										<core:ListItem key="{oInputParamModel>Objid}" text="{oInputParamModel>Objid}" additionalText="{oInputParamModel>Objty}"/>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>objtype}" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox id="ObjectType" showSecondaryValues="true" change="onChangeObjectType" selectedKey="{oInputParamModel>/ObjectType}"
+										valueState="{oInputParamModel>/ObjectType_ValueState}" valueStateText="{oInputParamModel>/ObjectType_ValueStateText}"
+										items="{oInitialLoadModel>/ObjectTypeList}">
+										<!--<core:ListItem key="key1" text="DT / TT / SEM_TEM / RTD"/>
+										<core:ListItem key="key2" text="FM"/>
+										<core:ListItem key="key3" text="WF / PFISTER / PNL_IN"/>
+										<core:ListItem key="key4" text="FS / AM / ANALYSER"/>-->
+										<layoutData>
+											<l:GridData span="L6 M6"/>
+										</layoutData>
+										<core:ListItem key="{oInitialLoadModel>Eqart}" text="{oInitialLoadModel>Eqart}" additionalText="{oInitialLoadModel>Eartx}"/>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<!--<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>objtype}" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<MultiInput id="ObjectType" showValueHelp="true" valueHelpRequest=".onObjectTypeValueHelpRequested"
+										valueState="{oInputParamModel>/ObjectType_ValueState}" valueStateText="{oInputParamModel>/ObjectType_ValueStateText}" required="true"
+										change=".onChangeObjectType" suggestionRows="{oInitialLoadModel>/ObjectTypeList}">
+										<suggestionColumns>
+											<Column>
+												<Label text="Object Type"/>
+											</Column>
+											<Column>
+												<Label text="Description"/>
+											</Column>
+										</suggestionColumns>
+										<suggestionRows>
+											<ColumnListItem>
+												<cells>
+													<Label text="{oInitialLoadModel>Eqart}"/>
+													<Label text="{oInitialLoadModel>Eartx}"/>
+												</cells>
+											</ColumnListItem>
+										</suggestionRows>
+										<layoutData>
+											<l:GridData span="L6 M6"/>
+										</layoutData>
+									</MultiInput>
+								</form:fields>
+							</form:FormElement>-->
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>eqipcode}" design="Standard" width="100%" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<MultiInput id="EquipCode" showValueHelp="true" required="false" valueHelpRequest=".onEquipCodeValueHelpRequested"
+										valueState="{oInputParamModel>/EquipCode_ValueState}" valueStateText="{oInputParamModel>/EquipCode_ValueStateText}"
+										suggestionRows="{oInitialLoadModel>/EquipmentList}" change="onChangeEquipCode">
+										<!--<tokens>
+											<Token key="{oInputParamModel>key}" text="{oInputParamModel>text}"/>
+											//tokens="{oInputParamModel>/oEquipCodes}" removed tokens binding...
+										</tokens>-->
+										<suggestionColumns>
+											<Column>
+												<Label text="Equipment Code"/>
+											</Column>
+											<Column>
+												<Label text="Description"/>
+											</Column>
+										</suggestionColumns>
+										<suggestionRows>
+											<ColumnListItem>
+												<cells>
+													<Label text="{oInitialLoadModel>Equnr}"/>
+													<Label text="{oInitialLoadModel>Eqktx}"/>
+												</cells>
+											</ColumnListItem>
+										</suggestionRows>
+										<layoutData>
+											<l:GridData span="L6 M6"/>
+										</layoutData>
+									</MultiInput>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>date}" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<DateRangeSelection id="Date" value="{oInputParamModel>/DateRange}" change="onChangeDate" displayFormat="dd-MMM-YYYY" required="true"
+										valueState="{oInputParamModel>/Date_ValueState}" valueStateText="{oInputParamModel>/Date_ValueStateText}">
+										<layoutData>
+											<l:GridData span="L6 M6"/>
+										</layoutData>
+									</DateRangeSelection>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="{i18n>calltype}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup id="idCallType" columns="1" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										selectedIndex="{oInputParamModel>/CallType}" select="onSelectCallType">
+										<buttons>
+											<RadioButton text="Scheduled Call" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="true"/>
+											<RadioButton text="Manual Call" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="2" labelSpanM="4" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<Button id="idMsgPopoverBtn" icon="sap-icon://alert" text="{= ${oMessageModel>/}.length }" visible="{= ${oMessageModel>/}.length > 0 }"
+						type="Emphasized" press="onMessagePopoverPress"/>
+					<Button xmlns="sap.m" id="scan" icon="sap-icon://bar-code" type="Transparent" press="onscan"/>
+					<ToolbarSpacer width=""/>
+					<Button text="Reset" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onReset"/>
+					<Button text="Continue" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+						press="onContinue"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+		<subHeader/>
+		<customHeader/>
+	</Page>
+</mvc:View>

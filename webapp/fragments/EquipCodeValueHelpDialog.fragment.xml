@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="Equipment Code" ok=".onEquipCodeValueHelpOkPress" cancel=".onEquipCodeValueHelpCancelPress" afterClose=".onEquipCodeValueHelpAfterClose"
+		supportRanges="true" key="Equnr" descriptionKey="Eqktx">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onEquipCodeValueHelpFilterBarSearch">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="Equnr" label="Equipment Code" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Equnr"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="Eqktx" label="Equipment Description" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Eqktx"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

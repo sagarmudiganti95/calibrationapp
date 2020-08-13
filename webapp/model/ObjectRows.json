@@ -1,0 +1,26 @@
+{
+	"rows": [{
+		"objtype": "FN",
+		"objname": "Functional"
+	},
+	{
+		"objtype": "GU",
+		"objname": "GU"
+	},
+	{
+		"objtype": "HU",
+		"objname": "Hu"
+	},
+	{
+		"objtype": "MH",
+		"objname": "Mechanical"
+	},
+	{
+		"objtype": "CR",
+		"objname": "CRUSHER"
+	},
+	{
+		"objtype": "AB",
+		"objname": "AB"
+	}]
+}

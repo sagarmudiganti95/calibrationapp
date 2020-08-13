@@ -1,0 +1,83 @@
+{
+	"Equipments": [{
+				"EquipCode": "EQUIP23456",
+				"EquipDesp": "Equipment Desc 1",
+				"Date": "28-Jan-2020",
+				"Task": "TS4343",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}, {
+				"EquipCode": "EQUIP23457",
+				"EquipDesp": "Equipment Desc 2",
+				"Date": "30-Jan-2020",
+				"Task": "TS4345",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}, {
+				"EquipCode": "EQUIP23458",
+				"EquipDesp": "Equipment Desc 3",
+				"Date": "05-Feb-2020",
+				"Task": "TS4353",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}, {
+				"EquipCode": "EQUIP23459",
+				"EquipDesp": "Equipment Desc 4",
+				"Date": "10-Feb-2020",
+				"Task": "TS4356",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}, {
+				"EquipCode": "EQUIP23460",
+				"EquipDesp": "Equipment Desc 5",
+				"Date": "15-Feb-2020",
+				"Task": "TS4363",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}, {
+				"EquipCode": "EQUIP23461",
+				"EquipDesp": "Equipment Desc 6",
+				"Date": "20-Feb-2020",
+				"Task": "TS4565",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}, {
+				"EquipCode": "EQUIP23462",
+				"EquipDesp": "Equipment Desc 7",
+				"Date": "25-Feb-2020",
+				"Task": "TS4366",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}, {
+				"EquipCode": "EQUIP23463",
+				"EquipDesp": "Equipment Desc 8",
+				"Date": "30-Feb-2020",
+				"Task": "TS4348",
+				"TaskDesc":"Inception Task 11",
+				"Frequency": "1 Day",
+				"ParameterValue": true,
+				"Remark":"",
+				"ObjectType":"GU"
+			}]
+}

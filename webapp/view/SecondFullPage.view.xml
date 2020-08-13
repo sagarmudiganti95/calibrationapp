@@ -1,0 +1,21 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.prism.zpmcalcheck.controller.SplitApp">
+	<Page>
+		
+	<content>
+		
+	    <FlexBox width="100%" alignContent="SpaceAround" alignItems="Center">
+		
+	        <items>
+		
+	            <Label text="Username :" width="100%"/>
+		
+	            <Input width="100%"/>
+		
+	        </items>
+		
+	    </FlexBox>
+		
+	</content>
+		
+	</Page>
+</mvc:View>

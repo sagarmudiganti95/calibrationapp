@@ -1,0 +1,206 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "com.prism.zpmcalcheck",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZPM_INSPCHK_SRV": {
+				"uri": "/sap/opu/odata/sap/ZPM_INSPCHK_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZPM_INSPCHK_SRV/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.prism.zpmcalcheck.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.collaboration": {},
+				"sap.m": {},
+				"sap.ui.comp": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.prism.zpmcalcheck.i18n.i18n"
+				}
+			},
+			"Model": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "model/oData.json",
+				"preload": false
+			},
+			"": {
+				"dataSource": "ZPM_INSPCHK_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.prism.zpmcalcheck.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "LoginPage",
+					"pattern": "Login",
+					"target": [
+						"LoginPage"
+					]
+				},
+				{
+					"name": "ResetPassword",
+					"pattern": "ResetPassword/{EmployeeCode}",
+					"target": [
+						"ResetPassword"
+					]
+				},
+				{
+					"name": "FullPage",
+					"pattern": "",
+					"target": [
+						"FullPage"
+					]
+				},
+				{
+					"name": "SecondFullPage",
+					"pattern": "SecondFullPage",
+					"target": [
+						"SecondFullPage"
+					]
+				},
+				{
+					"name": "SplitAppMaster",
+					"pattern": "SplitAppMaster",
+					"target": [
+						"NoObjectFound",
+						"Master"
+					]
+				},
+				{
+					"name": "DetailPage",
+					"pattern": "DetailPage/{QueryEquipID}",
+					"target": [
+						"Master",
+						"Detail"
+					],
+					"transition": "flip"
+				}
+			],
+			"targets": {
+				"LoginPage": {
+					"viewType": "XML",
+					"viewName": "LoginPage"
+				},
+				"ResetPassword": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "ResetPassword"
+				},
+				"FullPage": {
+					"viewType": "XML",
+					"viewName": "FullPage"
+				},
+				"SecondFullPage": {
+					"viewType": "XML",
+					"viewName": "SecondFullPage"
+				},
+				"SplitApp": {
+					"viewType": "XML",
+					"viewName": "SplitApp"
+				},
+				"Master": {
+					"viewType": "XML",
+					"viewName": "Master",
+					"viewLevel": 1,
+					"viewID": "idMasterPage",
+					"parent": "SplitApp",
+					"controlId": "splitapp",
+					"controlAggregation": "masterPages"
+				},
+				"Detail": {
+					"viewType": "XML",
+					"viewName": "Detail",
+					"viewID": "idDetailPage",
+					"viewLevel": 2,
+					"parent": "SplitApp",
+					"controlId": "splitapp",
+					"controlAggregation": "detailPages"
+				},
+				"NoObjectFound": {
+					"viewType": "XML",
+					"viewName": "NoObjectFound",
+					"viewLevel": 2,
+					"parent": "SplitApp",
+					"controlId": "splitapp",
+					"controlAggregation": "detailPages"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zpm_inspchk/webapp",
+		"_version": "1.1.0"
+	}
+}
