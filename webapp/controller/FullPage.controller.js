@@ -32,7 +32,7 @@ sap.ui.define([
 		 */
 
 		onInit: function() {
-			//Init Function Satrted...
+			//Init Function Satrted....
 
 			//Main Model for whole project.
 			this.oMainModel = this.getOwnerComponent().getModel();
